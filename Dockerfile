@@ -15,7 +15,7 @@ RUN apt-get update \
 COPY poetry.lock pyproject.toml ./
 
 RUN pip install poetry
-RUN poetry export -o requirements.txt
+RUN poetry export -o requirements.txt --dev
 RUN pip install -r requirements.txt
 
 COPY ./src .
