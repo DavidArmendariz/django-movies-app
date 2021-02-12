@@ -6,6 +6,7 @@ authors = ["David Armendariz <darmendariz1998@outlook.com>"]
 
 [tool.taskipy.tasks]
 start-django = "docker exec -it django-movies bash"
+test = "docker-compose exec movies pytest"
 
 [tool.poetry.dependencies]
 python = "^3.9"
