@@ -2,14 +2,20 @@ FROM python:3.9.1-slim-buster
 
 WORKDIR /usr/src/app
 
+# python
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV PIP_DISABLE_PIP_VERSION_CHECK on
+# pip
+RUN pip install --upgrade pip
+
+RUN apt-get update \
+    && apt-get -y install gcc postgresql \
+    && apt-get clean
 
 COPY poetry.lock pyproject.toml ./
 
 RUN pip install poetry
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-dev
+RUN poetry export -o requirements.txt
+RUN pip install -r requirements.txt
 
 COPY ./src .
