@@ -7,7 +7,7 @@ authors = ["David Armendariz <darmendariz1998@outlook.com>"]
 [tool.taskipy.tasks]
 start = "docker-compose up -d"
 stop = "docker-compose down"
-enter-django = "docker-compose exec movies bash"
+django-shell = "docker-compose exec movies bash"
 test = "docker-compose exec movies pytest"
 
 [tool.poetry.dependencies]
